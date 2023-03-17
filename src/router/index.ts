@@ -1,9 +1,11 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router'
 import common from './common'
+import tests from './tests'
 
 const routes = [
   ...common,
+  ...tests,
   {
     path: '/',
     component: () => import('@/layouts/default/Default.vue'),

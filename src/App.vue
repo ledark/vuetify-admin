@@ -1,18 +1,24 @@
 <template>
   <v-app>
-    <v-main>
-      <v-system-bar></v-system-bar>
-      <v-app-bar :elevation="2" title="Example"></v-app-bar>
+      <TheHeader/>
       <v-navigation-drawer>
-        Content-where
+        <TheSidebarMenu/>
       </v-navigation-drawer>
-      <div class="container text-center">app principal</div>
-      <router-view />
-      <v-footer>Copyright</v-footer>
-    </v-main>
+      <v-main>
+        <div class="container text-center">app principal</div>
+        <router-view />
+      </v-main>
+      <TheFooter/>
   </v-app>
 </template>
 
 <script setup lang="ts">
-  import HelloWorld from '@/components/HelloWorld.vue'
+import clienteData from '@/collections/cliente'
+  import TheSidebarMenu from '@/components/TheSidebarMenu.vue'
+  import TheHeader from '@/components/TheHeader.vue'
+  import TheFooter from '@/components/TheFooter.vue'
+  import { ref, onMounted } from 'vue'
+
+  const nomeFantasia = ref(clienteData.nomeFantasia)
+
 </script>
