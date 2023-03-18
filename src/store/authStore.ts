@@ -4,12 +4,7 @@ export default {
         isAuthenticated: false,       
     },
     actions: {
-        search: (context: any, payload: any) => {
-            console.log('search event', context, payload);
-            localStorage.setItem('search', payload);
-            context.commit('search', payload);
-            //state.search = payload;
-        },        
+  
     },
     mutations: {
         doLogin: (state: any) => {

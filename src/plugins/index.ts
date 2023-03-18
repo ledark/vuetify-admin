@@ -7,6 +7,8 @@
 // Plugins
 import { loadFonts } from './webfontloader'
 import vuetify from './vuetify'
+import http from '../http';
+import store from '../store';
 import router from '../router'
 
 // Types
@@ -16,5 +18,8 @@ export function registerPlugins (app: App) {
   loadFonts()
   app
     .use(vuetify)
+    .use(http)
+    .use(store)
     .use(router)
+
 }
