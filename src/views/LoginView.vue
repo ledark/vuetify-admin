@@ -31,30 +31,34 @@
         >
           Sign In
         </v-btn>
+        <v-btn @click="updateFormData()" >update</v-btn>
       </v-form>
     </v-card>
   </v-sheet>
 </template>
 
-<script lang="ts">
-export default {
-    data() {
-        return {
-            login: this.$store.state.authStore.loginForm.login,
-            senha: this.$store.state.authStore.loginForm.senha,
-            loading: false,
-            form: true
-        }
-    },
-    methods: {
-        onSubmit() {
-            if(this.login == 'admin' && this.senha == '123'){
-                let userData = {}; //dados from api
-                this.$store.dispatch('authStore/rememberUser', { login: this.login, senha: this.senha }, { root: true });
-                this.$store.dispatch('authStore/doLogin', userData, { root: true });
-                //this.$router.push({ path: '/' });
-            }
-        }
-    }
+<script setup lang="ts">
+import { ref, reactive } from 'vue'
+import { useStore } from 'vuex';
+const store = useStore();
+const loginForm = reactive(useStore().state.authStore.loginForm)
+const login = ref(useStore().state.authStore.loginForm.login)
+const senha = ref(useStore().state.authStore.loginForm.senha)
+const loading = ref(false)
+const form = ref(true)
+
+const onSubmit = () => {    
+  store.dispatch('authStore/rememberUser', { login: login, senha: senha }, { root: true });
+  updateFormData();
+  console.log(login, senha);
+  if(login.value == 'admin' && senha.value == '123'){
+      let userData = {}; //dados from api
+      store.dispatch('authStore/doLogin', userData, { root: true });
+  }
+}
+
+const updateFormData = () => {
+  loginForm.login = store.state.authStore.loginForm.login
+  loginForm.senha = store.state.authStore.loginForm.senha
 }
 </script>
