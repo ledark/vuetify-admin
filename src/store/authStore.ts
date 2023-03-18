@@ -1,20 +1,48 @@
+import router from '@/router';
+
 export default {
     namespaced: true,
     state: {
-        isAuthenticated: false,       
+        isAuthenticated: false,
+        loginForm: {
+            login: '',
+            senha: '',
+        },
+        redirect: '',
+        userData: {},
     },
     actions: {
-  
+        rememberUser: (context: any, payload: any) => {
+            context.commit('loginForm', payload);
+        },
+        doLogout: (context: any) => {
+            context.commit('isAuthenticated', false);
+        },
+        doLogin: (context: any, payload: any) => {
+            context.commit('isAuthenticated', true);
+            context.commit('userData', payload);
+            if(context.state.redirect !== '') {
+                router.push(context.state.redirect);
+                context.commit('redirect', '');
+            } else {
+                router.push('/');
+            }
+        },
     },
     mutations: {
-        doLogin: (state: any) => {
-            state.isAuthenticated = true;
+        loginForm: (state: any, payload: any) => {
+            state.loginForm = payload;
+        },     
+        isAuthenticated: (state: any, payload: any) => {
+            state.isAuthenticated = payload;
         },
-        doLogout: (state: any) => {
-            state.isAuthenticated = false;
-            localStorage.removeItem('token');
-            localStorage.removeItem('user');
-            localStorage.removeItem('pwd');
+        redirect: (state: any, path: string) => {
+            if(path !== '/login' || path !== '/logout') {
+                state.redirect = path;
+            }
+        },
+        userData: (state: any, payload: any) => {
+            state.userData = payload;
         },
     },
 }

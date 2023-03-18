@@ -1,7 +1,16 @@
 export default [
     {
-        path: '/search',
-        name: 'search',
-        component: () => import('../views/SearchView.vue'),
-    },
+        path: '/',
+        component: () => import('@/layouts/Default.vue'),
+        children: [
+            {
+                path: '/search',
+                component: () => import('../views/SearchView.vue'),
+            },
+        ]
+      },
+
+
+    
+
 ]

@@ -1,7 +1,14 @@
 export default [
-    {
-      path: '/test/storage',
-      name: 'home',
-      component: () => import('../views/tests/TestStorage.vue')
-    },
+  {
+    path: '/',
+    component: () => import('@/layouts/Default.vue'),
+    children: [
+      {
+        path: '/test/storage',
+        component: () => import('../views/tests/TestStorage.vue')
+      },
+    ]
+  },
+
+
 ]

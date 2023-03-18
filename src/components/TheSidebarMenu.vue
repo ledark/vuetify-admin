@@ -5,6 +5,7 @@
   <NavbarComponentItem to="/dashboard" title="Dashboard" />
   <NavbarComponentItem to="/dashboard" title="Dashboard" :disabled="true" />
   <NavbarComponentItem to="/test/storage" title="Testing Storage" />
+  <NavbarComponentItem to="/logout" title="Sair" />
 </ul>    
 </template>
 
