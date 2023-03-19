@@ -5,8 +5,43 @@
     </form>
 </template>
 
-<script>
+<script setup lang="ts">
 import { getUsers } from "../http"; // importa a função
+import { ref, onMounted } from "vue";
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
+
+const timeout = setTimeout(() => {}, 0);
+const interval = ref(timeout);
+const input = ref('');
+const store = useStore();
+const router = useRouter();
+
+const autoSearch = () => {
+    clearTimeout(interval.value);
+    interval.value = setTimeout(() => {
+        search();
+    }, 1500);
+};
+
+const search = () => {
+    clearTimeout(interval.value);
+    store.dispatch('searchStore/search', input.value, { root: true });
+    router.push('/search')
+
+    // chama a função e trata o resultado
+    getUsers()
+        .then((response) => {
+            // faz alguma coisa com a resposta da API
+            store.dispatch('searchStore/results', response.data, { root: true });
+        })
+        .catch((error) => {
+            // faz alguma coisa com o erro da API
+            console.error(error);
+        });
+};
+
+/*
 export default {
     name: "SearchComponent",
     data() {
@@ -43,4 +78,5 @@ getUsers()
         }
     }
 };
+*/
 </script>

@@ -4,9 +4,11 @@
   </li>
 </template>
 
-<script>
-export default {
-  name: "NavbarComponentItem",
+<script lang="ts">
+import { defineComponent, ref, computed } from 'vue';
+
+export default defineComponent({
+  name: 'NavbarComponentItem',
   props: {
     to: {
       type: String,
@@ -25,14 +27,18 @@ export default {
       default: false,
     },
   },
-  computed: {
-    renderClass() {
+  setup(props) {
+    const renderClass = computed(() => {
       return {
-        "nav-link": true,
-        'active': this.active,
-        'disabled': this.disabled,
+        'nav-link': true,
+        'active': props.active,
+        'disabled': props.disabled,
       };
-    },
-  }
-};
+    });
+
+    return {
+      renderClass,
+    };
+  },
+});
 </script>

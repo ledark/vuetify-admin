@@ -4,8 +4,14 @@
         <v-footer>            
         <p>
             Copyright
-            <pre>{{ $store.state.authStore.userData }}</pre>
+            <pre>{{ userData }}</pre>
         </p>
     </v-footer>        
     </div>
 </template>
+
+<script setup lang="ts">
+import { useStore } from 'vuex';
+import { computed } from 'vue';
+const userData = computed(() => useStore().state.authStore.userData);
+</script>

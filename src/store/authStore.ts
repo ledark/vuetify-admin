@@ -37,7 +37,7 @@ export default {
             state.isAuthenticated = payload;
         },
         redirect: (state: any, path: string) => {
-            if(path !== '/login' || path !== '/logout') {
+            if (path !== '/login' && path !== '/logout') {
                 state.redirect = path;
             }
         },
