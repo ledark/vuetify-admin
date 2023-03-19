@@ -15,7 +15,7 @@
           :readonly="loading"
           clearable
           label="Password"
-          placeholder="Enter your password"
+          placeholder="Digite sua Senha"
         ></v-text-field>
 
         <br>
@@ -29,9 +29,8 @@
           type="submit"
           variant="elevated"
         >
-          Sign In
+          Entrar
         </v-btn>
-        <v-btn @click="updateFormData()" >update</v-btn>
       </v-form>
     </v-card>
   </v-sheet>

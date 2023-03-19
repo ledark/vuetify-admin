@@ -1,8 +1,6 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router'
-//import store from '../store';
-import { useStore } from 'vuex';
-const store =  useStore();
+import store from '../store';
 
 //PathGroups
 import common from './common'
@@ -24,6 +22,9 @@ const router = createRouter({
 })
 
 router.beforeEach((to) => {
+
+  const storeState : any = store.state;
+  
   if(to.name === 'login') {
     store.dispatch('authStore/doLogout', {}, { root: true });
   }
@@ -32,7 +33,7 @@ router.beforeEach((to) => {
     router.push('/login');
   }
   if(to.meta.requiresAuth) {
-    if(!store.state.authStore.isAuthenticated) {
+    if(!storeState.authStore.isAuthenticated) {
       store.commit('authStore/redirect', to.path);
       router.push('/login');
     }

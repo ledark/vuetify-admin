@@ -14,4 +14,6 @@ const store = createStore({
 
 });
 
+export type storeState = typeof store.state
+
 export default store;
