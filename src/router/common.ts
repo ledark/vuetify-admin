@@ -14,6 +14,14 @@ export default [
           requiresAuth: true
         }
       },
+      {
+        path: "/go-to-abertura-de-chamados",
+        component: () => import('../views/DashboardView.vue'),
+        meta: {
+          requiresAuth: true,
+          action: () => { alert("teste") },
+        }
+      },
     ]
   },
 

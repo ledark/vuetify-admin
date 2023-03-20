@@ -38,6 +38,9 @@ router.beforeEach((to) => {
       router.push('/login');
     }
   }
+  if(to.meta.action && typeof to.meta.action === 'function') {
+    to.meta.action();
+  }
 })
 
 export default router
