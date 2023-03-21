@@ -5,11 +5,15 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "lint": "eslint . --fix --ignore-path .gitignore"
+    "lint": "eslint . --fix --ignore-path .gitignore",
+    "test": "npx cypress run",
+    "cypress": "npx cypress open"
   },
   "dependencies": {
     "@mdi/font": "7.0.96",
     "axios": "^1.3.4",
+    "locutus": "^2.0.16",
+    "require": "^0.4.4",
     "roboto-fontface": "*",
     "vue": "^3.2.38",
     "vue-router": "^4.0.0",
@@ -19,6 +23,7 @@
     "webfontloader": "^1.0.0"
   },
   "devDependencies": {
+    "@types/locutus": "^0.0.6",
     "@types/node": "^18.11.9",
     "@types/webfontloader": "^1.6.35",
     "@vitejs/plugin-vue": "^3.0.3",
