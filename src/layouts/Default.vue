@@ -5,8 +5,9 @@
         <TheSidebarMenu/>
       </v-navigation-drawer>
       <v-main>
-        <div class="container text-center">from layout</div>
-        <router-view />
+        <div class="container-fluid p-3">
+          <router-view />
+        </div>
         <TheFooter/>
       </v-main>
   </v-app>

@@ -19,6 +19,9 @@ export type NavbarPropType = {
 };
 
 export default [
+    { title: 'Trocar Senha', props: props({ to: '/perfil/senha' })},
+    { props: props({divider: true})},
+    { title: 'Sair', props: props({ to: '/logout' })},
 /*
     { title: 'Suporte', props: props({ bold: true })},
     { title: 'Abertura de Chamados', props: props({ to: '/go-to-abertura-de-chamados' })},

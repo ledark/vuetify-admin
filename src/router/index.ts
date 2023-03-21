@@ -9,16 +9,16 @@ import search from './search'
 import auth from './auth'
 
 //Mounting
-const routes = [
-  ...common,
-  ...tests,
-  ...search,
-  ...auth,
-]
+
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes,
+  routes: [
+    ...common,
+    ...tests,
+    ...search,
+    ...auth,
+  ],
 })
 
 router.beforeEach((to) => {
@@ -33,10 +33,16 @@ router.beforeEach((to) => {
     router.push('/login');
   }
   if(to.meta.requiresAuth) {
+    if(!store.getters['authStore/hasValidToken']) {
+      store.commit('authStore/redirect', to.path);
+      router.push('/login');      
+    }
+    /*
     if(!storeState.authStore.isAuthenticated) {
       store.commit('authStore/redirect', to.path);
       router.push('/login');
     }
+    */
   }
   if(to.meta.action && typeof to.meta.action === 'function') {
     to.meta.action();

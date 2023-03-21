@@ -1,4 +1,5 @@
 import router from '@/router';
+import {validateToken} from '@/http/index';
 
 export default {
     namespaced: true,
@@ -44,5 +45,15 @@ export default {
         userData: (state: any, payload: any) => {
             state.userData = payload;
         },
+    },
+    getters: {
+        async hasValidToken (state: any) {
+            try {
+                const response = await validateToken(state.userData);
+                return response.data.validated;
+            } catch (error) {
+                return false;
+            }
+        }
     },
 }

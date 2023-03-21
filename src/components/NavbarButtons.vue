@@ -38,8 +38,8 @@
     </div>
   </template>
 
-<script lang="ts">
-import { isDivider, isBold, NavbarPropType } from '@/collections/NavbarButtons'
+<script>
+import { isDivider, isBold } from '@/collections/NavbarButtons'
 import items from '@/collections/NavbarButtons'
 
 export default {
@@ -49,17 +49,15 @@ export default {
             required: false
         }
     },
-    //data with custom types
-    data(): {
-        items: NavbarPropType[]
-        } { return {
-            items: items
-        }},
+    data: () => ({
+        items: items
+    }),
+    
     methods: {
-        isDivider: (props: any) => {
+        isDivider: (props) => {
             return isDivider(props)
         },
-        isBold: (props: any) => {
+        isBold: (props) => {
             return isBold(props)
         },
     }
