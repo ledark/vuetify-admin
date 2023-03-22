@@ -1,14 +1,14 @@
 <template>
   <v-app>
+    <TheHeader/>
+    <v-navigation-drawer location="left"  class="bg-sidebar"  >
+        <TheSidebarMenu/>
+    </v-navigation-drawer>    
       <v-main>
         <div class="container-fluid p-3">
-          <p>Layout do Site</p>
-          <div class="container">
-            <div class="card p-3 m-1">
-              <router-view />
-            </div>
-          </div>
+          <router-view />
         </div>
+        <TheFooter/>
       </v-main>
   </v-app>
 </template>

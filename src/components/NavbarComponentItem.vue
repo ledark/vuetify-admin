@@ -26,6 +26,10 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    visible: {
+      type: Boolean,
+      default: true,
+    },
   },
   setup(props) {
     const renderClass = computed(() => {
@@ -33,6 +37,7 @@ export default defineComponent({
         'nav-link': true,
         'active': props.active,
         'disabled': props.disabled,
+        'd-none': !props.visible,
       };
     });
 

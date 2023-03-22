@@ -1,5 +1,5 @@
 <template>
-  <FrontMenu active="/home"></FrontMenu>
+  <FrontMenu active="/about"></FrontMenu>
 </template>
 
 <script lang="ts" setup>

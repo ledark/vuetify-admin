@@ -18,8 +18,8 @@ export default [
   },
   
   {
-    path: '/perfil',
-    component: () => import('@/layouts/Default.vue'),
+    path: '/admin/perfil',
+    component: () => import('@/layouts/Admin.vue'),
     meta: {
       requiresAuth: true,
     },

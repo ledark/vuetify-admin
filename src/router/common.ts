@@ -1,25 +1,31 @@
+import cliente from '../collections/cliente'
 export default [
   {
-    path: '/',
-    component: () => import('@/layouts/Default.vue'),
+    path: '/admin',
+    component: () => import('@/layouts/Admin.vue'),
     children: [
       {
-        path: '/home',
-        component: () => import('../views/Home.vue')
+        path: '',
+        component: () => import('../views/DashboardView.vue'),
+        meta: {
+          requiresAuth: true,
+        },
       },
       {
-        path: "/dashboard",
+        path: "dashboard",
         component: () => import('../views/DashboardView.vue'),
         meta: {
           requiresAuth: true
         }
       },
       {
-        path: "/go-to-abertura-de-chamados",
+        path: "go-to-abertura-de-chamados",
         component: () => import('../views/DashboardView.vue'),
         meta: {
           requiresAuth: true,
-          action: () => { alert("teste") },
+          action: () => { 
+            window.open(cliente.linkChamadosCreate); return false; 
+          },
         }
       },
     ]

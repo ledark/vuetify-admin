@@ -27,7 +27,7 @@ const autoSearch = () => {
 const search = () => {
     clearTimeout(interval.value);
     store.dispatch('searchStore/search', input.value, { root: true });
-    router.push('/search')
+    router.push('/admin/search')
 
     // chama a função e trata o resultado
     getUsers()

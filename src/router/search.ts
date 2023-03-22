@@ -1,16 +1,12 @@
 export default [
     {
-        path: '/',
-        component: () => import('@/layouts/Default.vue'),
+        path: '/admin',
+        component: () => import('@/layouts/Admin.vue'),
         children: [
             {
-                path: '/search',
+                path: 'search',
                 component: () => import('../views/SearchView.vue'),
             },
         ]
       },
-
-
-    
-
 ]

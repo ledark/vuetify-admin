@@ -19,12 +19,13 @@ export type NavbarPropType = {
 };
 
 export default [
-    { title: 'Trocar Senha', props: props({ to: '/perfil/senha' })},
-    { props: props({divider: true})},
-    { title: 'Sair', props: props({ to: '/logout' })},
-/*
     { title: 'Suporte', props: props({ bold: true })},
-    { title: 'Abertura de Chamados', props: props({ to: '/go-to-abertura-de-chamados' })},
+    { title: 'Abertura de Chamados', props: props({ to: '/admin/go-to-abertura-de-chamados' })},    
+    { props: props({divider: true})},
+    { title: 'Trocar Senha', props: props({ to: '/admin/perfil/senha' })},
+    { title: 'Ir para o Site', props: props({ to: '/home' })},
+    { title: 'Sair', props: props({ to: '/logout' })},    
+/*
     
     { title: 'Opção de Link 1', props: props()},
     { title: 'Opção de Link 2', props: props({ to: '/dashboard?1' })},

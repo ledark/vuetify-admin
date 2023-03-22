@@ -14,7 +14,7 @@ const apiClient = axios.create({
     
   // cria uma função que usa o apiClient para fazer a requisição GET
   export function getUsers() {
-    return apiClient.get("/users"); // retorna a promessa da requisição
+    return axios.get("https://jsonplaceholder.typicode.com/users"); // retorna a promessa da requisição
   }
 
 export function doLogin(username: string, password: string) {
@@ -26,7 +26,11 @@ export function doLogin(username: string, password: string) {
 }
 
 export const validateToken = async (token: string) => {
-  return await apiClient.get('/api/jwtvalidate?token='+token+'&pwd=')
+  return await apiClient.get('/api/jwtvalidate?token='+token+'&pwd=').then((response) => {
+    return response.data.validated;
+  }).catch((error) => {
+    return false;
+  });
 }
 
 export function changePassword(oldPassword: string, newPassword: string, confirmationPassword: string) {

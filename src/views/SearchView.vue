@@ -2,11 +2,12 @@
     <div>
       <h1>Resultados da Busca {{ search }}</h1>
       {{ results }}
-      <pre>{{store}}</pre>
+      <pre>{{store.state}}</pre>
     </div>
   </template>
 
 <script setup lang="ts">
+
 import { useStore } from 'vuex';
 import { computed } from 'vue';
 

@@ -1,6 +1,6 @@
 export default [
   {
-    path: '/',
+    path: '/test',
     component: () => import('@/layouts/Default.vue'),
     children: [
       {

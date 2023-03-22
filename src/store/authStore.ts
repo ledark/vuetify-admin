@@ -18,6 +18,7 @@ export default {
         },
         doLogout: (context: any) => {
             context.commit('isAuthenticated', false);
+            context.commit('userData', '');
         },
         doLogin: (context: any, payload: any) => {
             context.commit('isAuthenticated', true);
@@ -47,13 +48,12 @@ export default {
         },
     },
     getters: {
-        async hasValidToken (state: any) {
-            try {
-                const response = await validateToken(state.userData);
-                return response.data.validated;
-            } catch (error) {
-                return false;
+        /*
+        hasValidToken (state: any) {
+            return async () => {
+                await validateToken(state.userData)
             }
-        }
+        },
+        */
     },
 }
